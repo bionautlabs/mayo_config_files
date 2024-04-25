@@ -1,14 +1,14 @@
 parameters:
   - key: vision_config_path
-    default: /home/bionautlabs/.colibri/vision_configs/vision_config_v2_static_calib.yaml
+    default: /home/bionautlabs/repos/mayo_config_files/vision_configs/vision_config_calib.yaml
   - key: input_dir
-    default: /home/bionautlabs/.colibri/input_20240405_v3_sn1_109
+    default: /home/bionautlabs/.colibri/input_20240422_apr_mayo_v3_sn2
     # default: /home/bionautlabs/.colibri/input_20231106_v2_static
   # - key: cam_a_port
   #   default: 0
   # - key: cam_b_port
   #   default: 2
-  # - key: fps
+  # - key: fpsdddd
   #   default: 30
   - key: procedure
     default: ORIENT
@@ -16,10 +16,10 @@ parameters:
   - key: experiment_op_dir
     default: /home/bionautlabs/.colibri/logs/
   - key: exp_num
-    default: 20240405_2
+    default: 20240423_xray_reg_7
     
 log_dir: $experiment_op_dir/cam_registration_$exp_num
-controls_config_path: /home/bionautlabs/.colibri/controls_configs/control_config_v1.yaml
+controls_config_path: /home/bionautlabs/repos/mayo_config_files/controls_configs/control_config_0.32.0.yaml
 
 startup_steps:
   - type: colcon_build

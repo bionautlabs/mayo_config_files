@@ -41,7 +41,7 @@ procedure:
 
   default_bmin_ramp: 0.5  # mT (range: 0.1 to 1.0 mT, typically 0.5 mT)
   continuous_max_power: 25  # kW # continuous power supply limit
-  fenestration_max_power: 25  # kW, only for small-duration pulses
+  fenestration_max_power: 25 # kW, only for small-duration pulses
   default_current_multiplier: 2  # 2 for Mayo system, - 2 for v2_static
   default_max_angle_dev: 10  # deg (range: 1 to 5 deg)
   convergence_angle_dev: 2  # deg (range: 1 to 5 deg)
@@ -49,7 +49,7 @@ procedure:
   orient_rate: 8  # deg/s (range: 1 to 10 deg/s)
   hold_orientation_duration: 3000 # ms (range: 1000 to 10000 ms)
   default_force_bot_dir: -0.0 # mN (range: -0.1 to -1.0 mN)
-  default_gravity_opposition_force: -0.5 # multiple of gravitational force
-  # orient_gravity_opposition_force: 1 # multiple of gravitational force
+  #default_gravity_opposition_force: -0.5 # multiple of gravitational force
+  orient_gravity_opposition_force: 1 # multiple of gravitational force
   orient_step_size: 5  # deg 
   pause_after_intermediate_orient: 3 # sec 

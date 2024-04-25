@@ -1,14 +1,14 @@
 parameters:
   - key: input_dir
-    default: /home/bionautlabs/.colibri/input_20240325_v3_KevinTest
+    default: /home/bionautlabs/.colibri/input_20240422_apr_mayo_v3_sn2
   - key: exp_num
-    default: 0
+    default: 8
   - key: experiment_op_dir
     default: /home/bionautlabs/.colibri/logs/
   - key: procedure
     default: ORIENT
 log_dir: $experiment_op_dir/gravity_vector_$exp_num
-controls_config_path: /home/bionautlabs/.colibri/controls_configs/control_config_v1.yaml
+controls_config_path: /home/bionautlabs/repos/mayo_config_files/controls_configs/control_config_0.32.0.yaml
 
 startup_steps:
   - type: colcon_build

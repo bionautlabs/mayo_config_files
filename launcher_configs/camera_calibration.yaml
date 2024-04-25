@@ -1,6 +1,6 @@
 parameters:
   - key: vision_config_path
-    default: /home/bionautlabs/.colibri/vision_configs/vision_config_v2_static_calib.yaml
+    default: /home/bionautlabs/repos/mayo_config_files/vision_configs/vision_config_calib.yaml
   - key: input_dir
     default: /home/bionautlabs/.colibri/input_20240422_apr_mayo_v3_sn2
   - key: cam_a_port
@@ -12,9 +12,9 @@ parameters:
   - key: experiment_op_dir
     default: /home/bionautlabs/.colibri/logs/
   - key: exp_num
-    default: calib_a_1
+    default: 20240423_xray_calib_stereo_2
 log_dir: $experiment_op_dir/calib_$exp_num
-controls_config_path: /home/bionautlabs/.colibri/controls_configs/control_config_v1.yaml
+controls_config_path: /home/bionautlabs/repos/mayo_config_files/controls_configs/control_config_0.32.0.yaml
 
 startup_steps:
   - type: colcon_build
@@ -23,50 +23,50 @@ startup_steps:
     seconds: 2
 #########################################################################################################################################################################
 # FOR CAM A
-  - type: colibri_research_ws
-    arguments: run vision_pkg img_capture_node --ros-args -p cam_index:=a -p input_dir:=$input_dir -p configuration:=$vision_config_path
-    name: 01_img_capture_a
-  
-  - type: colibri_research_ws
-    arguments: run vision_pkg img_save_node --ros-args -p cam_index:=a -p input_dir:=$input_dir -p img_dir:=calib_ab_a
-    name: 02_img_save_a
-
-  - type: colibri_research_ws
-    arguments: run vision_pkg xray_calibration_collection_node --ros-args -p cam_index:=a -p user_ctrl:=True
-    name: 03_xray_arm
-#########################################################################################################################################################################
-# # FOR CAM B
-  # - type: colibri_research_ws
-  #   arguments: run vision_pkg img_capture_node --ros-args -p cam_index:=b -p input_dir:=$input_dir -p configuration:=$vision_config_path
-  #   name: 02_img_capture_b
-
-  # - type: colibri_research_ws
-  #   arguments: run vision_pkg img_save_node --ros-args -p cam_index:=b -p input_dir:=$input_dir -p img_dir:=calib_ab_b
-  #   name: 03_img_save_b
-
-  # - type: colibri_research_ws
-  #   arguments: run vision_pkg xray_calibration_collection_node --ros-args -p cam_index:=b -p user_ctrl:=True
-  #   name: 03_xray_arm
-#########################################################################################################################################################################
-# FOR STEREO
   # - type: colibri_research_ws
   #   arguments: run vision_pkg img_capture_node --ros-args -p cam_index:=a -p input_dir:=$input_dir -p configuration:=$vision_config_path
   #   name: 01_img_capture_a
-
-  # - type: colibri_research_ws
-  #   arguments: run vision_pkg img_capture_node --ros-args -p cam_index:=b -p input_dir:=$input_dir -p configuration:=$vision_config_path
-  #   name: 02_img_capture_b
-
-  # - type: colibri_research_ws
-  #   arguments: run vision_pkg img_save_node --ros-args -p cam_index:=a -p input_dir:=$input_dir -p img_dir:=calib_ab_stereo_a
-  #   name: 03_img_save_a
   
   # - type: colibri_research_ws
-  #   arguments: run vision_pkg img_save_node --ros-args -p cam_index:=b -p input_dir:=$input_dir -p img_dir:=calib_ab_stereo_b
-  #   name: 04_img_save_b
+  #   arguments: run vision_pkg img_save_node --ros-args -p cam_index:=a -p input_dir:=$input_dir -p img_dir:=calib_ab_a
+  #   name: 02_img_save_a
 
   # - type: colibri_research_ws
-  #   arguments: run vision_pkg xray_calibration_collection_node --ros-args -p cam_index:=b -p user_ctrl:=True
+  #   arguments: run vision_pkg xray_calibration_collection_node --ros-args -p cam_index:=a -p user_ctrl:=True
   #   name: 03_xray_arm
+#########################################################################################################################################################################
+# # FOR CAM B
+#   - type: colibri_research_ws
+#     arguments: run vision_pkg img_capture_node --ros-args -p cam_index:=b -p input_dir:=$input_dir -p configuration:=$vision_config_path
+#     name: 02_img_capture_b
+
+#   - type: colibri_research_ws
+#     arguments: run vision_pkg img_save_node --ros-args -p cam_index:=b -p input_dir:=$input_dir -p img_dir:=calib_ab_b
+#     name: 03_img_save_b
+
+#   - type: colibri_research_ws
+#     arguments: run vision_pkg xray_calibration_collection_node --ros-args -p cam_index:=b -p user_ctrl:=True
+#     name: 03_xray_arm
+#########################################################################################################################################################################
+# FOR STEREO
+  - type: colibri_research_ws
+    arguments: run vision_pkg img_capture_node --ros-args -p cam_index:=a -p input_dir:=$input_dir -p configuration:=$vision_config_path
+    name: 01_img_capture_a
+
+  - type: colibri_research_ws
+    arguments: run vision_pkg img_capture_node --ros-args -p cam_index:=b -p input_dir:=$input_dir -p configuration:=$vision_config_path
+    name: 02_img_capture_b
+
+  - type: colibri_research_ws
+    arguments: run vision_pkg img_save_node --ros-args -p cam_index:=a -p input_dir:=$input_dir -p img_dir:=calib_ab_stereo_a
+    name: 03_img_save_a
+  
+  - type: colibri_research_ws
+    arguments: run vision_pkg img_save_node --ros-args -p cam_index:=b -p input_dir:=$input_dir -p img_dir:=calib_ab_stereo_b
+    name: 04_img_save_b
+
+  - type: colibri_research_ws
+    arguments: run vision_pkg xray_calibration_collection_node --ros-args -p cam_index:=stereo -p user_ctrl:=True
+    name: 03_xray_arm
 
 

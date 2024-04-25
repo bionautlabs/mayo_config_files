@@ -1,14 +1,14 @@
 parameters:
   - key: mag_model_input_dir
-    default: /home/bionautlabs/.colibri/input_20240305_v3_sn1
+    default: /home/bionautlabs/.colibri/input_8em_v2_static
   - key: input_dir
-    default: /home/bionautlabs/.colibri/input_20240405_v3_sn1_109
+    default: /home/bionautlabs/.colibri/input_20240422_apr_crtest_mayo_v3_sn2
   - key: exp_type
-    default: 20240405_cart
+    default: 20240425_cartreg_test_E4
   - key: experiment_op_dir
     default: /home/bionautlabs/.colibri/logs/
   - key: cart
-    default: 0
+    default: 1
   - key: procedure
     default: ORIENT
 
